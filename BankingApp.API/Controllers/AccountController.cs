@@ -25,7 +25,7 @@ namespace BankingApp.API.Controllers
 
         // POST: api/account
         [HttpPost]
-        public async Task<IActionResult> CreateAccount([FromBody] Account account)
+        public async Task<IActionResult> CreateAccount([FromBody] AccountModel account)
         {
             if (account == null)
                 return BadRequest("Account data is required.");

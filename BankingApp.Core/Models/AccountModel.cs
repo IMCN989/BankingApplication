@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BankingApp.Core.Models
 {
-    public class Account
+    public class AccountModel
     {
         public int Id { get; set; }
         public int UserId { get; set; }

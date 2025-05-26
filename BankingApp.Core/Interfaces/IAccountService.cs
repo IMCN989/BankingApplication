@@ -2,9 +2,9 @@
 
 public interface IAccountService
 {
-    Task<int> CreateAccountAsync(Account account);
+    Task<int> CreateAccountAsync(AccountModel account);
     Task<bool> DeleteAccountAsync(int id);
-    Task<Account?> GetAccountByIdAsync(int id);
-    Task<IEnumerable<Account>> GetAccountsAsync(int? userId = null);
-    Task<bool> UpdateAccountAsync(Account account);
+    Task<AccountModel?> GetAccountByIdAsync(int id);
+    Task<IEnumerable<AccountModel>> GetAccountsAsync(int? userId = null);
+    Task<bool> UpdateAccountAsync(AccountModel account);
 }

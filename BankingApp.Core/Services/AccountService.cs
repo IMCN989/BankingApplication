@@ -11,33 +11,33 @@ public class AccountService : IAccountService
         _db = db;
     }
 
-    public async Task<IEnumerable<Account>> GetAccountsAsync(int? userId = null)
+    public async Task<IEnumerable<AccountModel>> GetAccountsAsync(int? userId = null)
     {
         string sql = userId.HasValue
             ? "SELECT * FROM get_accounts_by_user(@UserId)"
             : "SELECT * FROM get_all_accounts()";
 
-        return await _db.LoadData<Account, dynamic>(sql, new { UserId = userId });
+        return await _db.LoadData<AccountModel, dynamic>(sql, new { UserId = userId });
     }
 
-    public async Task<Account?> GetAccountByIdAsync(int id)
+    public async Task<AccountModel?> GetAccountByIdAsync(int id)
     {
-        var result = await _db.LoadData<Account, dynamic>(
+        var result = await _db.LoadData<AccountModel, dynamic>(
             "SELECT * FROM accounts WHERE id = @Id", new { Id = id });
 
         return result.FirstOrDefault();
     }
 
-    public async Task<int> CreateAccountAsync(Account account)
+    public async Task<int> CreateAccountAsync(AccountModel account)
     {
         var sql = "SELECT create_account(@UserId, @AccountNumber, @Balance, @AccountType)";
-        return await _db.LoadData<int, Account>(sql, account).ContinueWith(t => t.Result.First());
+        return await _db.LoadData<int, AccountModel>(sql, account).ContinueWith(t => t.Result.First());
     }
 
-    public async Task<bool> UpdateAccountAsync(Account account)
+    public async Task<bool> UpdateAccountAsync(AccountModel account)
     {
         var sql = "SELECT update_account(@Id, @AccountNumber, @Balance, @AccountType)";
-        var result = await _db.LoadData<bool, Account>(sql, account);
+        var result = await _db.LoadData<bool, AccountModel>(sql, account);
         return result.FirstOrDefault();
     }
 

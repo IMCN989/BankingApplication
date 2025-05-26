@@ -1,6 +1,7 @@
 ﻿
 using BankingApp.Core.DataAccess;
 using BankingApp.Core.Interfaces;
+using BankingApp.Core.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,7 @@ builder.Services.AddSwaggerGen();
 // 🔥 Register Core Services (SqlDataAccess, AccountService)
 builder.Services.AddScoped<ISqlDataAccess, SqlDataAccess>();
 builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<ITransactionService, TransactionService>();
 
 var app = builder.Build();
 
