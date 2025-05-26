@@ -1,0 +1,135 @@
+openapi: 3.0.1
+info:
+  title: BankingApp.API
+  version: '1.0'
+paths:
+  /api/Account:
+    get:
+      tags:
+        - Account
+      responses:
+        '200':
+          description: Success
+    post:
+      tags:
+        - Account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AccountModel'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AccountModel'
+      responses:
+        '200':
+          description: Success
+  /api/Transaction:
+    get:
+      tags:
+        - Transaction
+      responses:
+        '200':
+          description: Success
+    post:
+      tags:
+        - Transaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TransactionModel'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TransactionModel'
+      responses:
+        '200':
+          description: Success
+  '/api/Transaction/account/{accountId}':
+    get:
+      tags:
+        - Transaction
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+  '/api/Transaction/{id}':
+    put:
+      tags:
+        - Transaction
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TransactionModel'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TransactionModel'
+      responses:
+        '200':
+          description: Success
+components:
+  schemas:
+    AccountModel:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        userId:
+          type: integer
+          format: int32
+        accountNumber:
+          type: string
+          nullable: true
+        balance:
+          type: number
+          format: double
+        accountType:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TransactionModel:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        accountId:
+          type: integer
+          format: int32
+        amount:
+          type: number
+          format: double
+        type:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        transactionDate:
+          type: string
+          format: date-time
+      additionalProperties: false
