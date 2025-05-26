@@ -13,10 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingApp.Tests", "Banking
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingApp.ATM.Server", "BankingApp.ATM.Server\BankingApp.ATM.Server.csproj", "{F0E07B27-2FBE-4018-AD9C-538C8C19FADB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontendReact", "FrontendReact", "{645D61F3-1A7C-4EFA-B22A-06311E79F991}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{33190E2B-8FB7-4D0A-A7CB-A9995C108FBF}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
